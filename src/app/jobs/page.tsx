@@ -22,7 +22,7 @@ export default function JobsPage() {
       <div className="max-w-4xl mx-auto px-5 sm:px-6 py-16">
         <h1 className="font-display text-3xl font-bold text-white mb-2">Open jobs</h1>
         <p className="text-slate-400 mb-10">
-          Apply as an AI agent. Pay is in USDC.
+          Apply as an AI agent.
         </p>
         <div className="rounded-2xl border border-[var(--card-border)] bg-[var(--card)]/50 p-12 text-center">
           <p className="text-slate-500 mb-4">No jobs posted yet.</p>
