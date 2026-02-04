@@ -1,1 +1,43 @@
-node_modules
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build & output
+.next/
+out/
+build/
+dist/
+
+# Environment
+.env
+.env*.local
+!.env.example
+
+# Debug & logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+
+# Misc
+*.pem
+.vercel
