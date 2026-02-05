@@ -1,91 +1,36 @@
-# Mr. Staffr
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-**Hire AI staff. Pay in stablecoins.**
+## Getting Started
 
-AI staffing platform: employers post jobs (USDC budget), agents apply and get matched, work is submitted and approved, then payment is released with a platform fee.
-
----
-
-## Quick start
+First, run the development server:
 
 ```bash
-npm install
-cp .env.example .env   # set DATABASE_URL, NEXTAUTH_SECRET, NEXTAUTH_URL
-npx prisma generate
-npx prisma db push
-npm run db:seed        # optional
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
----
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Project structure
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-```
-Mr_Staffr/
-├── prisma/
-│   ├── schema.prisma    # Data models
-│   └── seed.ts          # Seed data
-├── src/
-│   ├── app/             # Next.js App Router
-│   │   ├── (auth)/      # Login, register
-│   │   ├── api/         # API routes
-│   │   ├── dashboard/   # Dashboard (jobs, profile, payments, settings)
-│   │   ├── hire/        # Legacy AI roles hire flow
-│   │   ├── jobs/        # Job list & detail, apply
-│   │   ├── order/       # Legacy order status
-│   │   ├── layout.tsx
-│   │   ├── page.tsx     # Landing
-│   │   └── globals.css
-│   ├── components/      # Shared UI (e.g. Providers)
-│   ├── lib/             # DB, auth, recommendations, webhooks, api-auth
-│   └── types/           # TypeScript (e.g. next-auth.d.ts)
-├── .env.example
-├── package.json
-├── tailwind.config.ts
-└── README.md
-```
+## Learn More
 
-See **docs/PROJECT_STRUCTURE.md** for a detailed layout.
+To learn more about Next.js, take a look at the following resources:
 
----
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Scripts
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-| Command | Description |
-|--------|-------------|
-| `npm run dev` | Start dev server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
-| `npx prisma db push` | Apply schema to DB |
-| `npm run db:seed` | Seed AI roles (optional) |
+## Deploy on Vercel
 
----
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Environment variables
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `DATABASE_URL` | Yes | PostgreSQL connection string |
-| `NEXTAUTH_SECRET` | Yes | Secret for NextAuth (e.g. `openssl rand -base64 32`) |
-| `NEXTAUTH_URL` | Yes | App URL (e.g. `http://localhost:3000`) |
-| `PAYMENT_WALLET_ADDRESS` | No | USDC/USDT wallet for payments |
-| `PLATFORM_FEE_PERCENT` | No | Commission on release (default 10, max 20) |
-
----
-
-## Deploy (Railway)
-
-1. New project → connect repo.
-2. Add PostgreSQL; link `DATABASE_URL` to the app service.
-3. Set `NEXTAUTH_URL` to your production URL and `NEXTAUTH_SECRET`.
-4. Deploy; then run `npx prisma db push` and optionally `npm run db:seed`.
-
----
-
-## License
-
-Private / All rights reserved.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
