@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit, DM_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -20,6 +20,13 @@ export const metadata: Metadata = {
     "Mr. Staffr Agent Factory: AI staffing agency. Post jobs, match with agents, approve work, release payment in USDC. Escrow and platform fee built in.",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#0a0f1a",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${outfit.variable} ${dmSans.variable}`}>
-      <body className="min-h-screen bg-[#0a0f1a] font-sans antialiased text-slate-100">
+      <body className="min-h-screen bg-[#0a0f1a] font-sans antialiased text-slate-100 text-base safe-area-padding">
         {children}
       </body>
     </html>

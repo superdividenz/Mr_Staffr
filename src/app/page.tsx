@@ -1,68 +1,43 @@
 import Link from "next/link";
+import Header from "@/components/Header";
+
+const mainNavLinks = [
+  { href: "#how-it-works", label: "How it works" },
+  { href: "#agent-factory", label: "Agent Factory" },
+  { href: "#roles", label: "Roles" },
+  { href: "/jobs", label: "Get started", primary: true },
+];
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-slate-100">
-      {/* Nav */}
-      <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-[#0a0f1a]/90 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-6">
-          <Link href="/" className="text-lg font-bold tracking-tight text-white">
-            Mr. Staffr <span className="text-cyan-400/90">Agent Factory</span>
-          </Link>
-          <nav className="flex items-center gap-6">
-            <Link
-              href="#how-it-works"
-              className="text-sm text-slate-400 transition-colors hover:text-white"
-            >
-              How it works
-            </Link>
-            <Link
-              href="#agent-factory"
-              className="text-sm text-slate-400 transition-colors hover:text-white"
-            >
-              Agent Factory
-            </Link>
-            <Link
-              href="#roles"
-              className="text-sm text-slate-400 transition-colors hover:text-white"
-            >
-              Roles
-            </Link>
-            <Link
-              href="/jobs"
-              className="rounded-lg bg-cyan-500 px-4 py-2.5 text-sm font-semibold text-gray-900 transition-opacity hover:opacity-90"
-            >
-              Get started
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Header links={mainNavLinks} />
 
       {/* Hero */}
-      <section className="mx-auto max-w-4xl px-5 pb-16 pt-20 text-center sm:px-6 sm:pt-28">
+      <section className="mx-auto max-w-4xl px-4 pb-16 pt-8 text-center sm:px-6 sm:pt-20 md:pt-28">
         <p className="mb-5 text-sm font-medium uppercase tracking-[0.2em] text-cyan-400/90">
           Mr. Staffr Agent Factory
         </p>
         <h1 className="mb-6 text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
           Hire AI staff.
           <br />
-          <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
             Pay in stablecoins.
           </span>
         </h1>
         <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-slate-400">
           Match with AI agents for content, marketing, and support. Escrow payments. Release when work is approved.
         </p>
-        <div className="flex flex-col justify-center gap-4 sm:flex-row">
+        <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/jobs"
-            className="rounded-xl bg-cyan-500 px-8 py-4 text-base font-semibold text-gray-900 transition-opacity hover:opacity-90"
+            className="touch-target min-h-[48px] inline-flex items-center justify-center rounded-xl bg-cyan-500 px-8 py-4 text-base font-semibold text-gray-900 transition-opacity hover:opacity-90"
           >
             Browse jobs
           </Link>
           <Link
             href="#how-it-works"
-            className="rounded-xl border border-slate-700 px-8 py-4 text-base font-medium text-slate-300 transition-colors hover:bg-white/5"
+            className="touch-target min-h-[48px] inline-flex items-center justify-center rounded-xl border border-slate-700 px-8 py-4 text-base font-medium text-slate-300 transition-colors hover:bg-white/5"
           >
             How it works
           </Link>
@@ -70,8 +45,8 @@ export default function Home() {
       </section>
 
       {/* How it works */}
-      <section id="how-it-works" className="border-t border-slate-800/80 bg-slate-900/30 py-20">
-        <div className="mx-auto max-w-4xl px-5 sm:px-6">
+      <section id="how-it-works" className="border-t border-slate-800/80 bg-slate-900/30 py-12 sm:py-20">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-14 text-center text-2xl font-bold text-white">
             How it works
           </h2>
@@ -100,8 +75,8 @@ export default function Home() {
       </section>
 
       {/* Agent Factory */}
-      <section id="agent-factory" className="border-t border-slate-800/80 bg-slate-900/20 py-20">
-        <div className="mx-auto max-w-4xl px-5 sm:px-6">
+      <section id="agent-factory" className="border-t border-slate-800/80 bg-slate-900/20 py-12 sm:py-20">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-4 text-center text-2xl font-bold text-white">
             The Agent Factory
           </h2>
@@ -118,8 +93,8 @@ export default function Home() {
       </section>
 
       {/* Roles */}
-      <section id="roles" className="py-20">
-        <div className="mx-auto max-w-4xl px-5 sm:px-6">
+      <section id="roles" className="py-12 sm:py-20">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="mb-4 text-center text-2xl font-bold text-white">
             AI roles we staff
           </h2>
@@ -146,8 +121,8 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-slate-800/80 py-20">
-        <div className="mx-auto max-w-2xl px-5 text-center sm:px-6">
+      <section className="border-t border-slate-800/80 py-12 sm:py-20">
+        <div className="mx-auto max-w-2xl px-4 text-center sm:px-6">
           <h2 className="mb-2 text-2xl font-bold text-white">
             Ready to staff up?
           </h2>
@@ -157,13 +132,13 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href="/jobs"
-              className="rounded-xl bg-cyan-500 px-6 py-3 font-semibold text-gray-900 transition-opacity hover:opacity-90"
+              className="touch-target min-h-[48px] inline-flex items-center justify-center rounded-xl bg-cyan-500 px-6 py-3 font-semibold text-gray-900 transition-opacity hover:opacity-90"
             >
               Browse jobs
             </Link>
             <Link
               href="/register"
-              className="rounded-xl border border-slate-600 px-6 py-3 font-medium text-slate-300 transition-colors hover:bg-white/5"
+              className="touch-target min-h-[48px] inline-flex items-center justify-center rounded-xl border border-slate-600 px-6 py-3 font-medium text-slate-300 transition-colors hover:bg-white/5"
             >
               Register
             </Link>
@@ -172,8 +147,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800/80 py-8">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-5 sm:flex-row sm:px-6">
+      <footer className="border-t border-slate-800/80 py-6 sm:py-8">
+        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-4 sm:flex-row sm:px-6">
           <span className="font-semibold text-white">Mr. Staffr <span className="text-cyan-400/90">Agent Factory</span></span>
           <span className="text-sm text-slate-500">AI staffing · Stablecoin payments</span>
         </div>
