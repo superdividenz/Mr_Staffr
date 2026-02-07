@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { AuthLinks } from "@/components/AuthLinks";
 
 export type NavLink = { href: string; label: string; primary?: boolean };
 
@@ -9,14 +10,14 @@ export default function Header({ links }: { links: NavLink[] }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-[#0a0f1a]/90 backdrop-blur-md safe-area-padding">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md safe-area-padding">
       <div className="mx-auto flex h-14 min-h-[44px] max-w-5xl items-center justify-between px-4 sm:px-6">
         <Link
           href="/"
           className="touch-target flex items-center text-lg font-bold tracking-tight text-white"
           aria-label="Mr. Staffr Agent Factory home"
         >
-          Mr. Staffr <span className="text-cyan-400/90">Agent Factory</span>
+          Mr. Staffr <span className="text-primary">Agent Factory</span>
         </Link>
 
         {/* Desktop nav */}
@@ -26,7 +27,7 @@ export default function Header({ links }: { links: NavLink[] }) {
               <Link
                 key={href}
                 href={href}
-                className="touch-target inline-flex items-center justify-center rounded-lg bg-cyan-500 px-4 py-2.5 text-sm font-semibold text-gray-900 transition-opacity hover:opacity-90 min-h-[44px]"
+                className="btn-primary touch-target inline-flex min-h-[44px] items-center justify-center rounded-lg px-4 py-2.5 text-sm"
               >
                 {label}
               </Link>
@@ -34,12 +35,15 @@ export default function Header({ links }: { links: NavLink[] }) {
               <Link
                 key={href}
                 href={href}
-                className="text-sm text-slate-400 transition-colors hover:text-white py-2 min-h-[44px] inline-flex items-center"
+                className="text-sm text-foreground-muted transition-colors hover:text-white py-2 min-h-[44px] inline-flex items-center"
               >
                 {label}
               </Link>
             )
           )}
+          <div className="md:ml-2">
+            <AuthLinks />
+          </div>
         </nav>
 
         {/* Mobile: hamburger when multiple links, else direct link(s) */}
@@ -47,7 +51,7 @@ export default function Header({ links }: { links: NavLink[] }) {
           <button
             type="button"
             onClick={() => setMenuOpen((o) => !o)}
-            className="touch-target inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-slate-700 text-slate-300 hover:bg-white/5 hover:text-white md:hidden"
+            className="touch-target inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-border text-foreground-muted hover:bg-white/5 hover:text-white md:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -63,16 +67,17 @@ export default function Header({ links }: { links: NavLink[] }) {
             )}
           </button>
         ) : (
-          <nav className="flex items-center md:hidden" aria-label="Main">
+          <nav className="flex items-center gap-2 md:hidden" aria-label="Main">
             {links.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
-                className="touch-target min-h-[44px] inline-flex items-center rounded-lg px-4 text-sm text-slate-400 hover:text-white"
+                className="touch-target min-h-[44px] inline-flex items-center rounded-lg px-4 text-sm text-foreground-muted hover:text-white"
               >
                 {label}
               </Link>
             ))}
+            <AuthLinks />
           </nav>
         )}
       </div>
@@ -81,7 +86,7 @@ export default function Header({ links }: { links: NavLink[] }) {
       {links.length > 1 && (
         <div
           id="mobile-menu"
-          className={`overflow-hidden border-t border-slate-800/80 bg-[#0a0f1a] md:hidden ${menuOpen ? "block" : "hidden"}`}
+          className={`overflow-hidden border-t border-border bg-background md:hidden ${menuOpen ? "block" : "hidden"}`}
           role="dialog"
           aria-label="Mobile menu"
         >
@@ -93,13 +98,16 @@ export default function Header({ links }: { links: NavLink[] }) {
                 onClick={() => setMenuOpen(false)}
                 className={`touch-target min-h-[48px] flex items-center rounded-lg px-4 text-left font-medium transition-colors ${
                   primary
-                    ? "bg-cyan-500 text-gray-900 hover:opacity-90"
-                    : "text-slate-300 hover:bg-white/5 hover:text-white"
+                    ? "bg-primary text-primary-text hover:opacity-90"
+                    : "text-foreground-muted hover:bg-white/5 hover:text-white"
                 }`}
               >
                 {label}
               </Link>
             ))}
+            <div className="mt-2 border-t border-border pt-2">
+              <AuthLinks />
+            </div>
           </nav>
         </div>
       )}

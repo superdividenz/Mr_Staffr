@@ -1,14 +1,47 @@
 @import "tailwindcss";
 
+/* Design system: matching palette and tokens */
 :root {
   --background: #0a0f1a;
-  --foreground: #f1f5f9;
+  --background-elevated: #0f172a;
+  --background-card: #0f172a;
+  --border: #1e293b;
+  --border-hover: rgba(45, 212, 191, 0.35);
+  --primary: #14b8a6;
+  --primary-hover: #2dd4bf;
+  --primary-muted: rgba(20, 184, 166, 0.12);
+  --primary-text: #042f2e;
+  --accent-claim: #34d399;
+  --accent-claim-muted: rgba(52, 211, 153, 0.15);
+  --foreground: #f8fafc;
+  --foreground-muted: #94a3b8;
+  --foreground-subtle: #64748b;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --shadow-glow: 0 0 24px -4px rgba(20, 184, 166, 0.2);
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-card: var(--background-card);
   --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-muted: var(--primary-muted);
+  --color-primary-text: var(--primary-text);
+  --color-accent-claim: var(--accent-claim);
+  --color-accent-claim-muted: var(--accent-claim-muted);
+  --color-border: var(--border);
   --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-family-display: var(--font-display), system-ui, sans-serif;
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
 }
 
 body {
@@ -23,7 +56,7 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
-/* Touch-friendly: remove tap highlight, use cursor pointer for buttons */
+/* Touch-friendly */
 @layer base {
   * {
     -webkit-tap-highlight-color: transparent;
@@ -33,8 +66,114 @@ body {
   }
 }
 
-/* Minimum touch target (44px) for interactive elements */
 .touch-target {
   min-height: 44px;
   min-width: 44px;
+}
+
+/* Reusable UI classes using design tokens */
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-text);
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--foreground-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+.btn-secondary:hover {
+  border-color: var(--border-hover);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--foreground);
+}
+
+.card {
+  background: var(--background-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: border-color 0.2s, background 0.2s;
+}
+.card-hover:hover {
+  border-color: var(--border-hover);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.badge-primary {
+  background: var(--primary-muted);
+  color: var(--primary-hover);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.badge-claim {
+  background: var(--accent-claim-muted);
+  color: var(--accent-claim);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.btn-claim {
+  background: var(--accent-claim);
+  color: #022c22;
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  transition: opacity 0.2s, box-shadow 0.2s;
+}
+.btn-claim:hover {
+  opacity: 0.9;
+  box-shadow: 0 0 20px -2px rgba(52, 211, 153, 0.25);
+}
+
+.input-field {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input-field::placeholder {
+  color: var(--foreground-subtle);
+}
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-muted);
+}
+
+.section-alt {
+  background: rgba(15, 23, 42, 0.4);
+  border-top: 1px solid var(--border);
+}
+
+.hero-gradient {
+  background: linear-gradient(180deg, var(--background) 0%, transparent 50%, rgba(15, 23, 42, 0.3) 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--primary-hover), var(--accent-claim));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.link-primary {
+  color: var(--primary-hover);
+  font-weight: 500;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+.link-primary:hover {
+  color: var(--primary);
+  text-decoration: underline;
 }

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, DM_Sans } from "next/font/google";
+import { Providers } from "@/components/Providers";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -34,8 +35,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${outfit.variable} ${dmSans.variable}`}>
-      <body className="min-h-screen bg-[#0a0f1a] font-sans antialiased text-slate-100 text-base safe-area-padding">
-        {children}
+      <body className="min-h-screen bg-background font-sans antialiased text-foreground text-base safe-area-padding">
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

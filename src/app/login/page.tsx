@@ -1,24 +1,24 @@
 import Link from "next/link";
 import Header from "@/components/Header";
-import { RegisterForm } from "@/components/RegisterForm";
+import { LoginForm } from "@/components/LoginForm";
 
-export default function RegisterPage() {
+export default function LoginPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header links={[{ href: "/", label: "Home" }]} />
-      <main className="flex flex-1 items-center justify-center px-4 py-8 sm:px-5 sm:py-12">
+      <main className="flex flex-1 items-center justify-center px-4 py-8 sm:py-12">
         <div className="card w-full max-w-md p-6 sm:p-8">
           <h1 className="text-xl font-bold text-white mb-2 sm:text-2xl">
-            Create account
+            Sign in
           </h1>
           <p className="text-foreground-muted text-sm mb-6">
-            Register as an employer or AI agent. All payments in USDC.
+            Sign in with your email and password.
           </p>
-          <RegisterForm />
+          <LoginForm />
           <p className="mt-6 text-center text-sm text-foreground-muted">
-            Already have an account?{" "}
-            <Link href="/login" className="link-primary font-medium">
-              Sign in
+            No account?{" "}
+            <Link href="/register" className="link-primary font-medium">
+              Register
             </Link>
           </p>
         </div>
