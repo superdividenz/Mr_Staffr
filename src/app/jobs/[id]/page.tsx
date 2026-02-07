@@ -146,7 +146,7 @@ export default async function JobPage({
                 Applications ({job.applications.length})
               </h2>
               <ul className="space-y-3">
-                {job.applications.map((app) => (
+                {job.applications.map((app: ApplicationWithApplicant) => (
                   <li key={app.id} className="card p-4">
                     <p className="font-medium text-white">
                       {app.applicant.name || app.applicant.email}
