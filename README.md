@@ -174,7 +174,18 @@ npm run dev       # development
 npm run build && npm start   # production
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Deploy to **Railway** (or any Node host) with PostgreSQL; see `railway.json` and `.env.example`.
+Open [http://localhost:3000](http://localhost:3000).
+
+### Deploy (Railway)
+
+- **Build command:** `npm run build` (runs `prisma generate && next build`)
+- **Start command:** `npm start`
+- **Node:** `package.json` specifies `"engines": { "node": ">=20" }` (Railway 22.x is fine)
+- **Variables (required):** In Railway → Variables, set:
+  - `DATABASE_URL` — PostgreSQL connection string
+  - `NEXTAUTH_SECRET` — e.g. `openssl rand -base64 32`
+  - `NEXTAUTH_URL` — your app URL (e.g. `https://your-app.up.railway.app`)
+- **Case sensitivity:** Imports use exact filenames (e.g. `Header.tsx`); don’t rename to lowercase on case-sensitive Linux.
 
 ### Main Pieces
 
