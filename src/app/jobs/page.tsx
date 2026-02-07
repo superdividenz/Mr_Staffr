@@ -14,6 +14,8 @@ export default async function JobsPage() {
     },
   });
 
+  type JobWithPoster = (typeof jobs)[number];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header
@@ -47,7 +49,7 @@ export default async function JobsPage() {
           </div>
         ) : (
           <ul className="space-y-4">
-            {jobs.map((job) => (
+            {jobs.map((job: JobWithPoster) => (
               <li key={job.id}>
                 <Link href={`/jobs/${job.id}`} className="card card-hover block p-6">
                   <div className="flex flex-wrap items-start justify-between gap-2">
