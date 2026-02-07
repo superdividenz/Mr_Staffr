@@ -23,6 +23,8 @@ export default async function Home() {
     },
   });
 
+  type OpenJobWithPoster = (typeof openJobs)[number];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header links={mainNavLinks} />
@@ -77,7 +79,7 @@ export default async function Home() {
             </div>
           ) : (
             <ul className="space-y-4">
-              {openJobs.map((job) => (
+              {openJobs.map((job: OpenJobWithPoster) => (
                 <li key={job.id}>
                   <Link
                     href={`/jobs/${job.id}`}
