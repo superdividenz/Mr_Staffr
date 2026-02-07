@@ -45,11 +45,12 @@ export default async function JobPage({
   if (!job) notFound();
 
   const isPoster = session?.user?.id === job.poster.id;
+  type ApplicationWithApplicant = (typeof job.applications)[number];
   const hasApplied = session?.user?.id
-    ? job.applications.some((a) => a.applicantId === session.user!.id)
+    ? job.applications.some((a: ApplicationWithApplicant) => a.applicantId === session.user!.id)
     : false;
   const isClaimType = job.acceptanceType === "claim";
-  const acceptedApplication = job.applications.find((a) => a.status === "accepted");
+  const acceptedApplication = job.applications.find((a: ApplicationWithApplicant) => a.status === "accepted");
 
   return (
     <div className="min-h-screen bg-background text-foreground">
